@@ -1,0 +1,8 @@
+[{
+  "_id": {
+    "$oid": "64b928575435c114057dad74"
+  },
+  "firstName": "Christiano",
+  "lastName": "Ronaldo",
+  "role": "Striker"
+}]
