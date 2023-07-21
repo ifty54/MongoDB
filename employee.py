@@ -31,3 +31,21 @@ records = [{
 }]
 information.insert_one(record)
 information.insert_many(records)
+
+#Simple way of Querying
+information.find_one()
+
+#SELECT * FROM DB
+information.find()
+
+#Also, you may write
+for record in information.find({}):
+    print(record)
+
+#SELECT particular info
+for records in information.find({"firstName":"Julian"}):
+    print(f"Find particular item is {records}")
+
+#Usage of $in (include), $lt (lesser than), $gt (greater than)
+for records in information.find({'role':{'$in':['Striker','Goalkeeper']}}):
+    print(f"Usage of $in is {records}")
