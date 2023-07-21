@@ -11,4 +11,23 @@ record = {
     "lastName": "Ronaldo",
     "role": "Striker"
 }
+
+records = [{
+    "firstName": "Manuel",
+    "lastName": "Neuer",
+    "role": "Goalkeeper"
+},{
+    "firstName": "Sergio",
+    "lastName": "Ramos",
+    "role": "Defender"
+},{
+    "firstName": "Bruno",
+    "lastName": "Fernandes",
+    "role": "Attacking Midfielder"
+},{
+    "firstName": "Julian",
+    "lastName": "Alvarez",
+    "role": "Striker"
+}]
 information.insert_one(record)
+information.insert_many(records)
