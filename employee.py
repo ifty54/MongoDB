@@ -69,3 +69,17 @@ for goals in information.find({'goals':{'$gt':270}}):
 
 for goals in information.find({'goals':{'$lt':280}}):
     print(goals)
+
+#OR operators
+for goals in information.find({'$or':[{'league':'LaLiga'},{'goals':300}]}):
+    print(f"Stats are {goals}")
+
+#Nested Documents
+inventory = mydb.inventory
+inventory.insert_many([
+    {'player':'Ben White', 'size':{'h':29,'w':65}},
+    {'player':'Harry Maguire', 'size':{'h':32,'w':72}}
+])
+
+for i in inventory.find({'size':{'h':29,'w':65}}):
+    print(i)
