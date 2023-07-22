@@ -1,4 +1,4 @@
-# Mongo with Python- Querying JSON Documents
+# MongoDB with Python- Querying JSON Documents
 import pymongo
 
 client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
