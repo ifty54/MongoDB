@@ -29,8 +29,21 @@ records = [{
     "lastName": "Alvarez",
     "role": "Striker"
 }]
+
+goals = [{
+    "league": "PL",
+    "goals" : 300
+},{
+    "league": "League 1",
+    "goals" : 260
+},{
+    "league": "LaLiga",
+    "goals" : 290
+}]
+
 information.insert_one(record)
 information.insert_many(records)
+information.insert_many(goals)
 
 #Simple way of Querying
 information.find_one()
@@ -49,3 +62,10 @@ for records in information.find({"firstName":"Julian"}):
 #Usage of $in (include), $lt (lesser than), $gt (greater than)
 for records in information.find({'role':{'$in':['Striker','Goalkeeper']}}):
     print(f"Usage of $in is {records}")
+
+
+for goals in information.find({'goals':{'$gt':270}}):
+    print(goals)
+
+for goals in information.find({'goals':{'$lt':280}}):
+    print(goals)
