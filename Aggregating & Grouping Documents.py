@@ -15,15 +15,23 @@ collection.insert_many(data)
 #Aggregate method
 
 aggregation = collection.aggregate(
+  [{"$group" : {"_id":"$name", "Total Subject": {"$sum":1}}}]
+)
+for i in aggregation:
+  print(i)
+        
+#Aggregate method Adding Marks
+
+aggregation = collection.aggregate(
   [{"$group" : {"_id":"$name", "Total Marks": {"$sum":"$score"}}}]
 )
 for i in aggregation:
   print(i)
 
-#Aggregate method Adding Marks
+#Calculating average
 
 aggregation = collection.aggregate(
-  [{"$group" : {"_id":"$name", "Total Subject": {"$sum":1}}}]
+  [{"$group" : {"_id":"$name", "Average": {"$avg":"$score"}}}]
 )
 for i in aggregation:
   print(i)
