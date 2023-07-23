@@ -36,3 +36,25 @@ aggregation = collection.aggregate(
 for i in aggregation:
   print(i)
 
+import datetime
+
+data = [{ "_id" : 1, "job" : "Writer", "salary" : 10000, "experience" : 2, "date" : datetime.datetime.utcnow()},
+{ "_id" : 2, "job" : "Engineer", "salary" : 20000, "experience" : 1, "date" : datetime.datetime.utcnow() },
+{ "_id" : 3, "job" : "Banker", "salary" : 5000, "experience" : 5, "date" : datetime.datetime.utcnow() },
+{ "_id" : 4, "job" : "Doctor", "salary" : 70000, "experience" : 10, "date" : datetime.datetime.utcnow() },
+{ "_id" : 5, "job" : "Scientist", "salary" : 500000, "experience" : 10, "date" :datetime.datetime.utcnow() }]
+
+print(data)
+
+newcollection = mydb["professional"]
+newcollection.insert_many(data)
+
+#Example
+
+aggregation = newcollection.aggregate(
+  [{"$group" : {"_id":"$job", 
+                "Exp-Sal Ratio": {"$avg" : {"$multiply" : ["$salary","$experience"]}},
+                "Average Salary" : {"$avg":"$salary"}}}]
+)
+for i in aggregation:
+  print(i)
